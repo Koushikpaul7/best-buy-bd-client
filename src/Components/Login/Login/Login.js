@@ -1,20 +1,40 @@
 
 import React, { useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import auth from '../../../firebase.init';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import SocialLogin from '../../SocialLogin/SocialLogin';
 
 const Login = () => {
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+      ] = useSignInWithEmailAndPassword(auth);
+
+
     const emailRef=useRef('');
     const passwordRef=useRef('');
     const navigate=useNavigate();
+
+    const location=useLocation();
+      const from=location.state?.from?.pathname||'/';
+
     const handleSubmit=event=>{
         event.preventDefault();
         const email=emailRef.current.value;
         const password= passwordRef.current.value;
-        console.log(email, password);
+       signInWithEmailAndPassword(email, password);
     }
+
     const navigateToRegister=event=>{
         navigate('/register')
+    }
+
+    if(user){
+        navigate(from,{replace:true});
     }
 
     return (
@@ -41,6 +61,7 @@ const Login = () => {
   </Button>
 </Form>
 <p>New to Best Buy Bd? <Link to='/register' className='text-warning pe-auto text text-decoration-none' onClick={navigateToRegister}>Please Register here</Link></p>
+<SocialLogin></SocialLogin>
         </div>
     );
 };
