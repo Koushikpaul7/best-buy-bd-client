@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import AddProducts from './Components/AddProducts/AddProducts';
 import Footer from './Components/Footer/Footer';
 import Header from './Components/Header/Header';
 
@@ -22,6 +23,9 @@ function App() {
      </RequireAuth>}></Route>
      <Route path='/inventory/:inventoryId' element={<RequireAuth>
       <ProductEdit></ProductEdit>
+     </RequireAuth>}></Route>
+     <Route path='/addproduct' element={<RequireAuth>
+      <AddProducts></AddProducts>
      </RequireAuth>}></Route>
      <Route path='/login' element={<Login></Login>}></Route>
      <Route path='/register' element={<Register></Register>}></Route>
