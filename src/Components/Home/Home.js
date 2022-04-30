@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import UseProducts from '../../Hooks/UseProducts';
-import Footer from '../Footer/Footer';
 import Product from '../Inventory/Product/Product';
 import Banner from './Banner/Banner';
+import {useAuthState} from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 const Home = () => {
+    const[user]=useAuthState(auth);
     const[products,setProducts]=UseProducts();
     return (
         <div>
@@ -24,6 +26,17 @@ const Home = () => {
                     <button className='btn btn-warning mb-3 fw-bold w-50 rounded py-3'>Go to inventory</button>
                     </div>
                     </Link>
+                    {
+                user&&<>
+               <Link to='/manage'>
+               <div className='container   text-center mt-2 py-2 mb-5'>
+               <button className='btn btn-warning  d-block w-50 mx-auto fw-bold'>Manage Products</button>
+               </div>
+                   </Link> 
+                   
+                </>
+            } 
+           
               
         </div>
     );
