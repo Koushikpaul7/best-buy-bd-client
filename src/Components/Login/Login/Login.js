@@ -62,7 +62,7 @@ const Login = () => {
            toast('Enter your email address');
        }
 
-    }
+    };
 
     return (
         <div className='container w-50 mx-auto mt-5'>
