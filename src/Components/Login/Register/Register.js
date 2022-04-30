@@ -2,7 +2,9 @@ import React, { useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword,useUpdateProfile } from 'react-firebase-hooks/auth';
+import SocialLogin from '../../SocialLogin/SocialLogin';
+import Loading from '../Loading/Loading';
 
 const Register = () => {
     const [
@@ -12,6 +14,7 @@ const Register = () => {
         error,
       ] = useCreateUserWithEmailAndPassword(auth);
 
+      const [updateProfile, updating, error1] = useUpdateProfile(auth);
 
 
     const nameRef=useRef('');
@@ -19,21 +22,31 @@ const Register = () => {
     const passwordRef=useRef('');
     const navigate=useNavigate();
 
-    const handleRegister=event=>{
+    const handleRegister= async(event)=>{
         event.preventDefault();
         const name=nameRef.current.value
         const email=emailRef.current.value;
         const password= passwordRef.current.value;
-        console.log(name,email, password);
-        createUserWithEmailAndPassword(email,password);
+
+        await createUserWithEmailAndPassword(email,password);
+        await updateProfile({ displayName: name });
+        navigate('/')
+       
     }
     const navigateToLogin=event=>{
         navigate('/login')
     }
-    if(user){
-        navigate('/')
+    // if(user){
+     
+    // }
+    let errorMessage;
+    if(error){
+        errorMessage=<p className='text-danger'>Error:{error.message}</p>
     }
 
+    if(loading|| updating){
+        return <Loading></Loading>
+    }
 
 
     return (
@@ -54,10 +67,13 @@ const Register = () => {
   </Form.Group>
   
   <Button variant="primary" type="submit">
-    Submit
+    Register
   </Button>
 </Form>
+{errorMessage}
 <p>Already Registered? <Link to='/login' className='text-warning pe-auto text text-decoration-none' onClick={navigateToLogin}>Please Login here</Link></p>
+
+<SocialLogin></SocialLogin>
         </div>
         </div>
     );
