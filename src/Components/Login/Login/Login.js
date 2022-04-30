@@ -59,7 +59,7 @@ const Login = () => {
         toast('Sent email for reset password ')
        }
        else{
-           toast('Enter your email address')
+           toast('Enter your email address');
        }
 
     }
