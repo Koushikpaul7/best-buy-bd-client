@@ -13,7 +13,7 @@ const ProductEdit = () => {
         fetch(url)
         .then(res=>res.json())
         .then(data=>SetProduct(data));
-    },[inventoryId]);
+    },[product]);
 
     const handleReduce=(event)=>{
         event.preventDefault();
@@ -30,14 +30,36 @@ const ProductEdit = () => {
         .then(res=>res.json())
         .then(data=>{
             console.log(data);
-            
+           
+            SetProduct(data)
+        })
+    }
+
+
+    const handleAddQuantity=(event)=>{
+        event.preventDefault();
+        const newQuantity=event.target.add.value;
+        const quantity=product.quantity+Number(newQuantity);
+        const updatedProduct={quantity};
+
+        fetch(`http://localhost:5000/product/${inventoryId}`,{
+            method:'PUT',
+            headers:{
+                'content-type':'application/json'
+            },
+            body:JSON.stringify(updatedProduct)
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data);
+           
             SetProduct(data)
         })
     }
 
 
     return (
-        <div className='mt-5 '>
+        <div className='mt-5 container '>
            <h3 className='text-center'> Product Detail of {product.name}</h3>
         <form onSubmit={handleReduce}className='w-50 mx-auto'>
             <input className='w-100 mb-2' type="text" placeholder='Name' name='name' value={product.name} required/>
@@ -46,17 +68,21 @@ const ProductEdit = () => {
             <br />
             <input className='w-100 mb-2' type="text" placeholder='Quantity' name='quantity' value={product.quantity} required/>
             <br />
-            <input type="submit" value="Delivered" />
+            <input className='btn btn-info my-4 fw-bold shadow' type="submit" value="Delivered" />
             
         </form>
 
 
-
+        <form onSubmit={handleAddQuantity} className='w-50 mx-auto'>
+            <input className='w-100 rounded shadow mb-3 mt-4' type="text" placeholder='Add quantity' name='add' />
+            <br />
+            <input className='btn btn-success px-4 mb-4' type="submit" value="Add " />
+        </form>
 
 
             {
                 user&&<>
-               <Link to='/manage'><button className='btn btn-warning  d-block w-50 mx-auto text-decoration-none'>Manage Products</button></Link> 
+               <Link to='/manage'><button className='btn btn-warning  d-block w-50 mx-auto text-decoration-none mb-5'>Manage Products</button></Link> 
                 </>
             }
 
