@@ -1,8 +1,12 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { Link } from 'react-router-dom';
+import auth from '../../firebase.init';
 import UseProducts from '../../Hooks/UseProducts';
 
 const ManageProducts = () => {
     const[products,setProducts]=UseProducts();
+    const[user]=useAuthState(auth);
 
     const handleDelete=id=>{
         const proceed= window.confirm('are you sure to remove the product');
@@ -34,6 +38,13 @@ const ManageProducts = () => {
                 <button onClick={()=>handleDelete(product._id)} className='btn btn-danger rounded fw-bold'>Delete product</button>
                </div>)
            }
+           <Link to='/addproduct' style={{ textDecoration: 'none' }}>
+               <div className='container   text-center mt-2 py-2 mb-5'>
+               <button className='btn btn-success text-decoration-none d-block w-50 mx-auto fw-bold'>Add new products</button>
+               </div>
+                   </Link> 
+
+
         </div>
     );
 };

@@ -28,10 +28,21 @@ const Header = () => {
       
     </Nav>
     <Nav>
-      <Nav.Link href="#deets">More deets</Nav.Link>
-      <Nav.Link eventKey={2} href="#memes">
-        Dank memes
-      </Nav.Link>
+    {
+                user&&<>
+               <Nav.Link as={Link} to="/manage">Manage inventory</Nav.Link> 
+                </>
+            }
+     {
+                user&&<>
+               <Nav.Link as={Link} to="/addproduct">Add new product</Nav.Link> 
+                </>
+            }
+            {
+                user&&<>
+               <Nav.Link as={Link} to="/myproducts">My Products</Nav.Link> 
+                </>
+            }
     </Nav>
   </Navbar.Collapse>
   </Container>

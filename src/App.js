@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import AddProducts from './Components/AddProducts/AddProducts';
+import MyProducts from './Components/AddProducts/MyProducts';
 import Footer from './Components/Footer/Footer';
 import Header from './Components/Header/Header';
 
@@ -30,6 +31,9 @@ function App() {
      </RequireAuth>}></Route>
      <Route path='/manage' element={<RequireAuth>
       <ManageProducts></ManageProducts>
+     </RequireAuth>}></Route>
+     <Route path='/myproducts' element={<RequireAuth>
+      <MyProducts></MyProducts>
      </RequireAuth>}></Route>
      <Route path='/login' element={<Login></Login>}></Route>
      <Route path='/register' element={<Register></Register>}></Route>
