@@ -62,11 +62,11 @@ const ProductEdit = () => {
         <div className='mt-5 container '>
            <h3 className='text-center'> Product Detail of {product.name}</h3>
         <form onSubmit={handleReduce}className='w-50 mx-auto'>
-            <input className='w-100 mb-2' type="text" placeholder='Name' name='name' value={product.name} required/>
+            <input className='w-100 mb-2' type="text" placeholder='Name' name='name' value={product.name} required readOnly/>
             <br />
-            <input className='w-100 mb-2' type="text" placeholder='Price' name='price' value={product.price} required/>
+            <input className='w-100 mb-2' type="text" placeholder='Price' name='price' value={product.price} required readOnly/>
             <br />
-            <input className='w-100 mb-2' type="text" placeholder='Quantity' name='quantity' value={product.quantity} required/>
+            <input className='w-100 mb-2' type="text" placeholder='Quantity' name='quantity' value={product.quantity} required readOnly/>
             <br />
             <input className='btn btn-info my-4 fw-bold shadow' type="submit" value="Delivered" />
             
@@ -82,7 +82,7 @@ const ProductEdit = () => {
 
             {
                 user&&<>
-               <Link to='/manage'><button className='btn btn-warning  d-block w-50 mx-auto text-decoration-none mb-5'>Manage Products</button></Link> 
+               <Link to='/manage'><button style={{ textDecoration: 'none' }} className='btn btn-warning  d-block w-50 mx-auto text-decoration-none mb-5'>Manage Products</button></Link> 
                 </>
             }
 

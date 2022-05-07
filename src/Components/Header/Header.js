@@ -15,7 +15,7 @@ const Header = () => {
         <div>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
   <Container>
-  <Navbar.Brand as={Link} to="/">React-Bootstrap</Navbar.Brand>
+  <Navbar.Brand as={Link} to="/"> <img style={{height:'50px',width:'70px'}} src="https://yt3.ggpht.com/ytc/AKedOLT28LRkz_sX-D_nQJyC4mZDhyULLzkMASpuF0k1ag=s900-c-k-c0x00ffffff-no-rj" alt="" /> Best Buy Bd</Navbar.Brand>
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <Navbar.Collapse id="responsive-navbar-nav">
     <Nav className="me-auto">

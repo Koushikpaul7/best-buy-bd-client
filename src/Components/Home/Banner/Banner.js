@@ -12,7 +12,7 @@ const Banner = () => {
       alt="First slide"
     />
     <Carousel.Caption>
-      <h3 className='text-warning bg-light'>Menz Collections</h3>
+      <h3 className='text-info fw-bold bg-light'>Menz Collections</h3>
       
     </Carousel.Caption>
   </Carousel.Item>
@@ -23,7 +23,7 @@ const Banner = () => {
       alt="Second slide"
     />
     <Carousel.Caption>
-      <h3 className='text-warning bg-light'>Ladies Collection</h3>
+      <h3 className='text-info fw-bold bg-light'>Ladies Collection</h3>
       
     </Carousel.Caption>
   </Carousel.Item>
@@ -34,7 +34,7 @@ const Banner = () => {
       alt="Third slide"
     />
     <Carousel.Caption>
-      <h3 className='text-warning bg-light'>Kids Collections</h3>
+      <h3 className='text-info fw-bold bg-light'>Kids Collections</h3>
      
     </Carousel.Caption>
   </Carousel.Item>
