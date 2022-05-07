@@ -27,6 +27,7 @@ const MyProducts = () => {
             {myProducts.length}</h3>
             <div className='mt-5 mb-5'>
             <table>
+                <tbody>
           <tr>
             <th>Name</th>
             <th>Price</th>
@@ -42,6 +43,7 @@ const MyProducts = () => {
                         <td>{pd.company}</td>
                         </tr>)
                 }
+                </tbody>
                 </table>
             </div>
         </div>

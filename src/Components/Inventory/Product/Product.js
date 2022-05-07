@@ -1,8 +1,9 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import '../Product.css'
 const Product = ({product}) => {
     const{_id,name,picture,description,price,quantity,company}=product;
+
+
     const navigate=useNavigate();
     const navigateToProductEdit=id=>{
         navigate(`/inventory/${id}`)
