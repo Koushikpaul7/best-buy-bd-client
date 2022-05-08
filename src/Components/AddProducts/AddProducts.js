@@ -12,7 +12,7 @@ const AddProducts = () => {
     const onSubmit = (data,event) => {
         console.log(data);
 
-        const url=` https://shielded-bayou-98434.herokuapp.com/product`;
+        const url=`  https://shielded-bayou-98434.herokuapp.com/product`;
         fetch(url,{
             method:'POST',
             headers: {

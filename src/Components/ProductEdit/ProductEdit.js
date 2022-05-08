@@ -9,7 +9,7 @@ const ProductEdit = () => {
     const {inventoryId}=useParams();
     const [product,SetProduct]=useState({});
     useEffect(()=>{
-        const url=` https://shielded-bayou-98434.herokuapp.com/product/${inventoryId}`;
+        const url=`  https://shielded-bayou-98434.herokuapp.com/product/${inventoryId}`;
         fetch(url)
         .then(res=>res.json())
         .then(data=>SetProduct(data));
@@ -20,7 +20,7 @@ const ProductEdit = () => {
         const quantity=event.target.quantity.value-1;
         const updatedProduct={quantity};
 
-        fetch(` https://shielded-bayou-98434.herokuapp.com/product/${inventoryId}`,{
+        fetch(`  https://shielded-bayou-98434.herokuapp.com/product/${inventoryId}`,{
             method:'PUT',
             headers:{
                 'content-type':'application/json'
@@ -42,7 +42,7 @@ const ProductEdit = () => {
         const quantity=product.quantity+Number(newQuantity);
         const updatedProduct={quantity};
 
-        fetch(` https://shielded-bayou-98434.herokuapp.com/product/${inventoryId}`,{
+        fetch(`  https://shielded-bayou-98434.herokuapp.com/product/${inventoryId}`,{
             method:'PUT',
             headers:{
                 'content-type':'application/json'

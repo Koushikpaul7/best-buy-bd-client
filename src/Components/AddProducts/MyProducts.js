@@ -11,7 +11,7 @@ const MyProducts = () => {
     useEffect(()=>{
     const getMyProducts=async()=>{
         const email=user.email;
-        const url=` https://shielded-bayou-98434.herokuapp.com/myproducts?email=${email}`;
+        const url=`  https://shielded-bayou-98434.herokuapp.com/myproducts?email=${email}`;
         const {data}=await axios.get(url,{
             headers:{
                 authorization:`Bearer ${localStorage.getItem('accessToken')}`

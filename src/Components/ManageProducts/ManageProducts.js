@@ -13,7 +13,7 @@ const ManageProducts = () => {
     const handleDelete=id=>{
         const proceed= window.confirm('are you sure to remove the product');
         if(proceed){
-            const url=` https://shielded-bayou-98434.herokuapp.com/product/${id}`;
+            const url=`  https://shielded-bayou-98434.herokuapp.com/product/${id}`;
             fetch(url,{
                 method:'DELETE',
             })
