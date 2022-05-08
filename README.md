@@ -1,6 +1,28 @@
-# Getting Started with Create React App
+# Best buy Bd
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://best-buy-bd.web.app/).
+
+# List of technologies
+* React
+* Bootstrap
+* javascript
+* Css
+* firebase
+* firebase Hooks
+* React Router
+* mongodb
+* jsonwebtoken
+* heroku
+
+# Feature and Functionality
+* Carousel banner for featured photos
+* Login system with google
+* Login and signup by email and Password
+* private route implementation
+* SPA 
+* CRUD operation
+* heroku deployment
+* Manage Inventory, add product, added product by particular user.
 
 ## Available Scripts
 
