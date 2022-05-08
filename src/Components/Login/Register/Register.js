@@ -30,15 +30,15 @@ const Register = () => {
 
         await createUserWithEmailAndPassword(email,password);
         await updateProfile({ displayName: name });
-        navigate('/');
+        
        
     }
     const navigateToLogin=event=>{
         navigate('/login')
     }
-    // if(user){
-     
-    // }
+     if(user){
+      navigate('/');
+     }
     let errorMessage;
     if(error){
         errorMessage=<p className='text-danger'>Error:{error.message}</p>
