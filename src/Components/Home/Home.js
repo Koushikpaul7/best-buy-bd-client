@@ -6,10 +6,15 @@ import Banner from './Banner/Banner';
 import {useAuthState} from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import Reviews from './Reviews/Reviews';
+import Loading from '../Login/Loading/Loading';
 
 const Home = () => {
     const[user]=useAuthState(auth);
     const[products,setProducts]=UseProducts();
+
+    if(products.length===0){
+        return <Loading></Loading>
+    }
     return (
         <div>
            <Banner></Banner>

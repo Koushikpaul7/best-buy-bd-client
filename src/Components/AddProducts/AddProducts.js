@@ -1,6 +1,7 @@
 
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
+import { toast, ToastContainer } from 'react-toastify';
 import auth from '../../firebase.init';
 
 const AddProducts = () => {
@@ -8,10 +9,10 @@ const AddProducts = () => {
 
 
     const { register, handleSubmit } = useForm();
-    const onSubmit = data => {
+    const onSubmit = (data,event) => {
         console.log(data);
 
-        const url=`http://localhost:5000/product`;
+        const url=` https://shielded-bayou-98434.herokuapp.com/product`;
         fetch(url,{
             method:'POST',
             headers: {
@@ -22,6 +23,8 @@ const AddProducts = () => {
         .then(res=>res.json())
         .then(data=>{
             console.log(data);
+            toast('Successfully Added',data.name)
+            event.target.reset()
         })
 
     }
@@ -39,6 +42,7 @@ const AddProducts = () => {
       <input placeholder='quantity' className='mb-2 rounded' type="number" {...register("quantity")} />
       <input className='btn btn-success rounded shadow' type="submit" value='Add product' />
     </form>
+    <ToastContainer></ToastContainer>
         </div>
     );
 };

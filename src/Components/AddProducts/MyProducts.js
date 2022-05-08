@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import Loading from '../Login/Loading/Loading';
 import './MyProduct.css'
 
 const MyProducts = () => {
@@ -10,7 +11,7 @@ const MyProducts = () => {
     useEffect(()=>{
     const getMyProducts=async()=>{
         const email=user.email;
-        const url=`http://localhost:5000/myproducts?email=${email}`;
+        const url=` https://shielded-bayou-98434.herokuapp.com/myproducts?email=${email}`;
         const {data}=await axios.get(url,{
             headers:{
                 authorization:`Bearer ${localStorage.getItem('accessToken')}`
@@ -21,6 +22,10 @@ const MyProducts = () => {
     }
     getMyProducts();
 },[user])
+
+if(myProducts.length===0){
+    return<Loading></Loading>
+}
     return (
         <div className='text-center container mb-5'>
           <h3 className='mt-4'>  Added Products By  {user.email} is:

@@ -1,9 +1,13 @@
 import React from 'react';
 import UseProducts from '../../Hooks/UseProducts';
+import Loading from '../Login/Loading/Loading';
 import Product from './Product/Product';
 
 const Inventory = () => {
     const[products,setProducts]=UseProducts();
+    if(products.length===0){
+        return<Loading></Loading>
+    }
     return (
         <div>
             <div className='container'>

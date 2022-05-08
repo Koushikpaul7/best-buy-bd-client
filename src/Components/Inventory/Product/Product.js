@@ -12,7 +12,7 @@ const Product = ({product}) => {
         <div>
   <div className="card">
     <img style={{height:'300px'}} src={picture} className="card-img-top" alt="..."/>
-    <div className="card-body">
+    <div className="card-body" style={{ width: "18rem" }}>
       <h5 className="card-title">{name}</h5>
       <p className="card-text">Product details: {description}</p>
       <p className="card-text">Price: {price}</p>

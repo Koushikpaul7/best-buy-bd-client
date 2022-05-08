@@ -3,15 +3,17 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
 import UseProducts from '../../Hooks/UseProducts';
+import Loading from '../Login/Loading/Loading';
 
 const ManageProducts = () => {
     const[products,setProducts]=UseProducts();
     const[user]=useAuthState(auth);
 
+
     const handleDelete=id=>{
         const proceed= window.confirm('are you sure to remove the product');
         if(proceed){
-            const url=`http://localhost:5000/product/${id}`;
+            const url=` https://shielded-bayou-98434.herokuapp.com/product/${id}`;
             fetch(url,{
                 method:'DELETE',
             })
@@ -22,6 +24,9 @@ const ManageProducts = () => {
                 setProducts(remaining)
             })
         }
+    }
+    if(products.length===0){
+        return<Loading></Loading>
     }
 
 
